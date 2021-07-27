@@ -24,6 +24,8 @@
                         <li class=""><a href="{{ route('question.index') }}" class="">Questions</a></li>
                     </ul>
                 </li>
+
+                <li data-username="dashboard" class="nav-item active"><a href="{{ route('user.index') }}" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">User Managment</span></a></li>
             </ul>
         </div>
     </div>

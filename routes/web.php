@@ -27,6 +27,9 @@ include('admin/designation.php');
 //Admin-Question Routes
 include('admin/question.php');
 
+//Admin-User managment Routes
+include('admin/user.php');
+
 
 
 
