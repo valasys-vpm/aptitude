@@ -76,7 +76,7 @@
 
         var countDownDate = new Date(d).getTime();
 
-        var now = new Date().getTime();
+        var now = new Date("{{ date('M d, Y H:i:s') }}").getTime();
         // Update the count down every 1 second
 
         $( document ).ready(function() {
