@@ -25,7 +25,9 @@
                     </ul>
                 </li>
 
-                <li data-username="user" class="nav-item active"><a href="{{ route('user.index') }}" class="nav-link"><span class="pcoded-micon"><i class="feather feather icon-users"></i></span><span class="pcoded-mtext">User Managment</span></a></li>
+                <li data-username="user" class="nav-item active"><a href="{{ route('user.index') }}" class="nav-link"><span class="pcoded-micon"><i class="feather feather icon-user"></i></span><span class="pcoded-mtext">User Managment</span></a></li>
+                <li data-username="registration" class="nav-item active"><a href="{{ route('registration.index') }}" class="nav-link"><span class="pcoded-micon"><i class="feather feather icon-users"></i></span><span class="pcoded-mtext">Registration</span></a></li>
+
             </ul>
         </div>
     </div>

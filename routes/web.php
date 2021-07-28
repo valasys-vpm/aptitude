@@ -30,6 +30,8 @@ include('admin/question.php');
 //Admin-User managment Routes
 include('admin/user.php');
 
+//Registration Routes
+include('admin/registration.php');
 
 
 

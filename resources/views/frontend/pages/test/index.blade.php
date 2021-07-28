@@ -76,14 +76,14 @@
 
         var countDownDate = new Date(d).getTime();
 
-        var now = new Date().getTime();
+        var now = new Date("{{ date('M d, Y H:i:s') }}").getTime();
         // Update the count down every 1 second
 
         $( document ).ready(function() {
             var x = setInterval(function() {
 
                 // Get todays date and time
-                var now = new Date().getTime();
+                var now = new Date("{{ date('M d, Y H:i:s') }}").getTime();
 
                 // Find the distance between now and the count down date
                 var distance = countDownDate - now;
