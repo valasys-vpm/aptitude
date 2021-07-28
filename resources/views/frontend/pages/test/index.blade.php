@@ -1,8 +1,39 @@
 @extends('frontend.layouts.master')
 
+@section('style')
+    @parent
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
+@append
+
 @section('content')
     <div class="row">
-        <form id="form-test" action="{{ route('aptitude.test.submit') }}" method="post" class="col-md-12 row">
+        <form id="form-test" action="{{ route('aptitude.test.submit') }}" method="post" class="col-md-12">
+            @csrf
+            <div id="data-container" class="row"></div>
+            <div class="row">
+                <div class="offset-2 offset-md-2 offset-sm-0 col-md-8 col-sm-12">
+                    <div id="pagination" class="float-right"></div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="offset-2 offset-md-2 offset-sm-0 col-md-8 col-sm-12">
+                    <div class="card card-border-c-blue">
+                        <div class="card-block card-task">
+                            <div class="task-board">
+                                <button  type="submit" class="btn btn-primary btn-lg float-right">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+
+    <div class="row" style="display: none;">
+        <form id="form-test-2" action="{{ route('aptitude.test.submit') }}" method="post" class="col-md-12 row">
             @csrf
             @php
             $i = 1;
@@ -58,7 +89,7 @@
 
 @section('javascript')
     @parent
-
+    <script src="https://pagination.js.org/dist/2.1.5/pagination.js"></script>
 
     <script>
         // Set the date we're counting down to
@@ -108,6 +139,66 @@
             }, 1000);
         });
 
+    </script>
 
+    <script>
+        $( document ).ready(function() {
+            $('#pagination').pagination({
+                dataSource: @json(session()->get('resultQuestions')),
+                pageSize: 10,
+                showPageNumbers: false,
+                showNavigator: true,
+                callback: function(data, pagination) {
+                    // template method of yourself
+                    var html = template_pagination(data);
+                    $("#data-container").html(html);
+                }
+            })
+        });
+
+        function template_pagination(data)
+        {
+
+            var dataHtml = '';
+            $.each(data, function (index, item) {
+                console.log(item);
+
+                dataHtml += '<div class="offset-2 offset-md-2 offset-sm-0 col-md-8 col-sm-12">' +
+                    '                <div class="card card-border-c-blue">' +
+                    '                    <div class="card-header">' +
+                    '                        <div class="row">' +
+                    '                            <div class="col-md-1">' +
+                    '                                <span class="text-secondary">'+item.id+')</span>' +
+                    '                            </div>' +
+                    '                            <div class="col-md-11">' +
+                    '                                <span class="text-secondary">'+item.question+'</span>' +
+                    '                            </div>' +
+                    '                        </div>' +
+                    '                    </div>' +
+                    '                    <div class="card-block card-task">' +
+                    '                        <div class="row">' +
+                    '                            <div class="col-sm-12">' +
+                    '                                <ol type="A" class="task-detail">';
+                                                    $.each(item.options, function (index2, item2) {
+                dataHtml += '                                    <li>' +
+                        '                                        <div class="form-group">' +
+                        '                                            <div class="radio radio-primary d-inline">' +
+                        '                                                <input type="radio" name="answer['+item.id+']" value="'+item2.id+'" id="option_'+item.id+'_'+item2.id+'">' +
+                        '                                                <label for="option_'+item.id+'_'+item2.id+'" class="cr">'+item2.option+'</label>' +
+                        '                                            </div>' +
+                        '                                        </div>' +
+                        '                                    </li>';
+                                                    });
+
+                dataHtml += '                                </ol>' +
+                    '                            </div>' +
+                    '                        </div>' +
+                    '                    </div>' +
+                    '                </div>' +
+                    '            </div>';
+            });
+            dataHtml += '';
+            return dataHtml;
+        }
     </script>
 @append
