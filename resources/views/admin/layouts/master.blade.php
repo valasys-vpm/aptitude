@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="{{ asset('public/template') }}/assets/plugins/prism/css/prism.min.css">
     <!-- vendor css -->
     <link rel="stylesheet" href="{{ asset('public/template') }}/assets/css/style.css">
+    <!-- data tables css -->
+    <link rel="stylesheet" href="{{ asset('public/template') }}/assets/plugins/data-tables/css/datatables.min.css">
 
     @yield('style')
 
@@ -334,6 +336,10 @@
 <script src="{{ asset('public/template') }}/assets/js/vendor-all.min.js"></script>
 <script src="{{ asset('public/template') }}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="{{ asset('public/template') }}/assets/js/pcoded.min.js"></script>
+
+<!-- datatable Js -->
+<script src="{{ asset('public/template') }}/assets/plugins/data-tables/js/datatables.min.js"></script>
+<script src="{{ asset('public/template') }}/assets/js/pages/tbl-datatable-custom.js"></script>
 
 <!-- prism Js -->
 <script src="{{ asset('public/template') }}/assets/plugins/prism/js/prism.min.js"></script>
