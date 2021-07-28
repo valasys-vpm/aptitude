@@ -16,7 +16,7 @@ class RegistrationRepository implements RegistrationInterface
         $this->registration = $registration;
     }
 
-    public function get($filters)
+    public function get($filters = [])
     {
         $query = $this->registration->whereNotNull('id');
 
@@ -24,16 +24,16 @@ class RegistrationRepository implements RegistrationInterface
             $query->orderBy($filters['order_by']);
         }
 
-        /*if(isset($filters['with']) && in_array('designation', $filters['with'])) {
+        if(isset($filters['with']) && in_array('designation', $filters['with'])) {
             $query->with('designation');
-        }*/
+        }
 
         return $query->get();
     }
 
     public function find($id)
     {
-        return $this->registration->findOrFail($id);
+        return $this->registration->with('designation')->findOrFail($id);
     }
 
     public function store($attributes)

@@ -24,6 +24,9 @@ class CreateRegistrationsTable extends Migration
             $table->string('expected_ctc');
             $table->string('can_join_in');
             $table->dateTime('test_start_time')->nullable();
+            $table->integer('attempted')->nullable();
+            $table->integer('total_marks')->nullable();
+            $table->integer('total_question')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

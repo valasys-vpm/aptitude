@@ -106,6 +106,14 @@ class TestRepository implements TestInterface
                 }
             }
 
+            $registration = $this->registration->with('designation')->findOrFail($registration_id);
+            
+
+            $registration->attempted = RegistrationQuestion::whereRegistrationId($registration_id)->whereNotNull('option_id')->count();
+            $registration->total_marks = RegistrationQuestion::whereRegistrationId($registration_id)->sum('mark');
+            $registration->total_question = $registration->designation->number_of_question;
+
+            $registration->update();
             DB::commit();
             $response = array('status' => TRUE);
 
