@@ -161,8 +161,6 @@
 
             var dataHtml = '';
             $.each(data, function (index, item) {
-                console.log(item);
-
                 dataHtml += '<div class="offset-2 offset-md-2 offset-sm-0 col-md-8 col-sm-12">' +
                     '                <div class="card card-border-c-blue">' +
                     '                    <div class="card-header">' +
