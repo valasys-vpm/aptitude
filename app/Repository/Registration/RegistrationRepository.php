@@ -27,7 +27,7 @@ class RegistrationRepository implements RegistrationInterface
         if(isset($filters['with']) && in_array('designation', $filters['with'])) {
             $query->with('designation');
         }
-
+        $query->orderBy('id', 'DESC');
         return $query->get();
     }
 

@@ -35,7 +35,7 @@ class QuestionRepository implements QuestionInterface
             $query->with('options');
         }
         $query->orderBy('id', 'DESC');
-        
+
         return $query->get();
 
     }
