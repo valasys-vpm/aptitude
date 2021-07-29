@@ -74,7 +74,7 @@ class TestController extends Controller
         //Send Mail
         $details = $this->data;
         Mail::send('frontend.pages.email.result', $details, function ($email) use ($details){
-            $email->to(['sagar@valasys.com', 'tejaswi@valays.com'])->subject('Result for '.$this->data['resultRegistration']->designation->title.' aptitude test');
+            $email->to(['sagar@valasys.com', 'tejaswi@valasys.com'])->subject('Result for '.$this->data['resultRegistration']->designation->title.' aptitude test');
         });
 
         return view('frontend.pages.test.result', $this->data);
