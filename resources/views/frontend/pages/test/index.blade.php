@@ -123,25 +123,25 @@
                     '                    <div class="card-block card-task">' +
                     '                        <div class="row">' +
                     '                            <div class="col-sm-12">' +
-                    '                                <ol type="A" class="task-detail">';
+                    '                                <div class="task-detail">';
                                                     $.each(item.options, function (index2, item2) {
-                dataHtml += '                                    <li>' +
+                dataHtml += '                                    <div>' +
                         '                                        <div class="form-group">' +
-                        '                                            <div class="radio radio-primary d-inline">' +
-                                                                        '<div class="row">' +
-                                                                            '<div class="col-md-2">' +
-                                '                                                <input type="radio" name="answer['+item.id+']" value="'+item2.id+'" id="option_'+item.id+'_'+item2.id+'">' +
-                                                                            '</div>' +
-                                                                            '<div class="col-md-10">' +
-                                '                                                <label for="option_'+item.id+'_'+item2.id+'" class="cr">'+item2.option+'</label>' +
-                                                                            '</div>' +
-                                                                        '</div>' +
+                        '                                            <div class="d-inline">' +
+                                                                            '<div class="row">'+
+                                                                                '<div class="col-md-1 pr-0" style="padding-top: 3px;">'+
+                                    '                                                <input type="radio" name="answer['+item.id+']" value="'+item2.id+'" id="option_'+item.id+'_'+item2.id+'">' +
+                                                                                '</div>'+
+                                                                                '<div class="col-md-11 pl-0">'+
+                                    '                                                <label for="option_'+item.id+'_'+item2.id+'" class="cr">'+item2.option+'</label>' +
+                                                                                '</div>'+
+                                                                            '</div>'+
                         '                                            </div>' +
                         '                                        </div>' +
-                        '                                    </li>';
+                        '                                    </div>';
                                                     });
 
-                dataHtml += '                                </ol>' +
+                dataHtml += '                                </div>' +
                     '                            </div>' +
                     '                        </div>' +
                     '                    </div>' +
