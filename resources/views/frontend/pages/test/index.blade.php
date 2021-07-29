@@ -128,8 +128,14 @@
                 dataHtml += '                                    <li>' +
                         '                                        <div class="form-group">' +
                         '                                            <div class="radio radio-primary d-inline">' +
-                        '                                                <input type="radio" name="answer['+item.id+']" value="'+item2.id+'" id="option_'+item.id+'_'+item2.id+'">' +
-                        '                                                <label for="option_'+item.id+'_'+item2.id+'" class="cr">'+item2.option+'</label>' +
+                                                                        '<div class="row">' +
+                                                                            '<div class="col-md-2">' +
+                                '                                                <input type="radio" name="answer['+item.id+']" value="'+item2.id+'" id="option_'+item.id+'_'+item2.id+'">' +
+                                                                            '</div>' +
+                                                                            '<div class="col-md-10">' +
+                                '                                                <label for="option_'+item.id+'_'+item2.id+'" class="cr">'+item2.option+'</label>' +
+                                                                            '</div>' +
+                                                                        '</div>' +
                         '                                            </div>' +
                         '                                        </div>' +
                         '                                    </li>';
