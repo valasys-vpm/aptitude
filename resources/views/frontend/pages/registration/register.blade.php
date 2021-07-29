@@ -1,9 +1,9 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="row">
+    <div class="row bg-dark">
         <!-- [ form-element ] start -->
-        <div class="offset-3 offset-md-3 offset-sm-0 col-md-6">
+        <div class="offset-3 offset-md-3 offset-sm-0 col-md-6" style="padding-top: 30px;">
             <div class="card">
                 <div class="card-header">
                     <h5>Registration</h5>
