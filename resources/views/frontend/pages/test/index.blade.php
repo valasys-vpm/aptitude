@@ -6,7 +6,7 @@
 @append
 
 @section('content')
-    <div class="row">
+    <div class="row" onmousedown="return false" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false">
         <form id="form-test" action="{{ route('aptitude.test.submit') }}" method="post" class="col-md-12">
             @csrf
             <div id="data-container" class="row"></div>
@@ -29,60 +29,6 @@
             </div>
 
 
-        </form>
-    </div>
-
-    <div class="row" style="display: none;">
-        <form id="form-test-2" action="{{ route('aptitude.test.submit') }}" method="post" class="col-md-12 row">
-            @csrf
-            @php
-            $i = 1;
-            @endphp
-            @foreach(session()->get('resultQuestions') as $question)
-            <div class="offset-2 offset-md-2 offset-sm-0 col-md-8 col-sm-12">
-                <div class="card card-border-c-blue">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-md-1">
-                                <span class="text-secondary">{{ $i }})</span>
-                            </div>
-                            <div class="col-md-11">
-                                <span class="text-secondary">{!! $question->question !!}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-block card-task">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <ol type="A" class="task-detail">
-                                @foreach($question->options as $option)
-                                    <li>
-                                        <div class="form-group">
-                                            <div class="radio radio-primary d-inline">
-                                                <input type="radio" name="answer[{{ $question->id }}]" value="{{ $option->id }}" id="option_{{ $question->id }}_{{ $option->id }}">
-                                                <label for="option_{{ $question->id }}_{{ $option->id }}" class="cr">{{ $option->option }}</label>
-                                            </div>
-                                        </div>
-                                    </li>
-                                @endforeach
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                @php $i++; @endphp
-            @endforeach
-            <div class="offset-2 offset-md-2 offset-sm-0 col-md-8 col-sm-12">
-                <div class="card card-border-c-blue">
-
-                    <div class="card-block card-task">
-                        <div class="task-board">
-                            <button  type="submit" class="btn btn-primary btn-sm float-right">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </form>
     </div>
 @endsection
@@ -151,15 +97,15 @@
                 callback: function(data, pagination) {
                     // template method of yourself
                     console.log(data);
-                    var html = template_pagination(data);
+                    var html = template_pagination(data, pagination);
                     $("#data-container").html(html);
                 }
             })
         });
 
-        function template_pagination(data)
+        function template_pagination(data, pagination)
         {
-            console.log(data);
+            console.log(pagination);
             var dataHtml = '';
             $.each(data, function (index, item) {
                 dataHtml += '<div class="offset-2 offset-md-2 offset-sm-0 col-md-8 col-sm-12">' +
@@ -167,7 +113,7 @@
                     '                    <div class="card-header">' +
                     '                        <div class="row">' +
                     '                            <div class="col-md-1">' +
-                    '                                <span class="text-secondary">'+item.id+')</span>' +
+                    '                                <span class="text-secondary">'+(((pagination.pageNumber -1) * pagination.pageSize) + (index + 1))+')</span>' +
                     '                            </div>' +
                     '                            <div class="col-md-11">' +
                     '                                <span class="text-secondary">'+item.question+'</span>' +
@@ -199,5 +145,16 @@
             dataHtml += '';
             return dataHtml;
         }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('body').bind('cut copy', function(e) {
+                e.preventDefault();
+            });
+            $("body").on("contextmenu", function(e) {
+                return false;
+            });
+        });
     </script>
 @append
