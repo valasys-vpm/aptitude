@@ -24,6 +24,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <ol type="1">
+                                <li class="pb-1">This test consists of Multiple Choice Questions (MCQs) based on basic technical concepts as well as some basic questions on business operations and our online services.</li>
                                 <li class="pb-1">Total Number of Questions - {{ session('registered_user')->designation->number_of_question }}</li>
                                 <li class="pb-1">Time Limit - {{ session('registered_user')->designation->test_duration }} Minutes. (It will appear on the right top of the page)</li>
                                 <li class="pb-1">Please do not refresh page once you begin the test.</li>
