@@ -34,7 +34,8 @@ class QuestionRepository implements QuestionInterface
         if(isset($filters['with']) && in_array('options', $filters['with'])) {
             $query->with('options');
         }
-
+        $query->orderBy('id', 'DESC');
+        
         return $query->get();
 
     }
