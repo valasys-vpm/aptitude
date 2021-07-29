@@ -31,7 +31,7 @@
     @yield('style')
 </head>
 
-<body>
+<body onmousedown="return false" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false">
 <!-- [ Pre-loader ] start -->
 <div class="loader-bg">
     <div class="loader-track">
@@ -333,6 +333,17 @@
             MenuTrigger: 'hover',
             SubMenuTrigger: 'hover',
             themelayout: 'horizontal',
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('body').bind('cut copy', function(e) {
+            e.preventDefault();
+        });
+        $("body").on("contextmenu", function(e) {
+            return false;
         });
     });
 </script>

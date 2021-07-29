@@ -107,14 +107,14 @@
 
         var countDownDate = new Date(d).getTime();
 
-        var now = new Date("{{ date('M d, Y H:i:s') }}").getTime();
+        //var now = new Date("{{ date('M d, Y H:i:s') }}").getTime();
         // Update the count down every 1 second
 
         $( document ).ready(function() {
             var x = setInterval(function() {
 
                 // Get todays date and time
-                var now = new Date("{{ date('M d, Y H:i:s') }}").getTime();
+                var now = new Date().getTime();
 
                 // Find the distance between now and the count down date
                 var distance = countDownDate - now;
@@ -150,6 +150,7 @@
                 showNavigator: true,
                 callback: function(data, pagination) {
                     // template method of yourself
+                    console.log(data);
                     var html = template_pagination(data);
                     $("#data-container").html(html);
                 }
@@ -158,7 +159,7 @@
 
         function template_pagination(data)
         {
-
+            console.log(data);
             var dataHtml = '';
             $.each(data, function (index, item) {
                 dataHtml += '<div class="offset-2 offset-md-2 offset-sm-0 col-md-8 col-sm-12">' +
