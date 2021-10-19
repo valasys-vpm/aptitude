@@ -61,7 +61,7 @@
                     <div class="card card-border-c-blue">
                         <div class="card-block card-task">
                             <div class="task-board">
-                                <button disabled type="submit" class="btn btn-primary btn-lg float-right">Submit</button>
+                                <button type="submit" class="btn btn-primary btn-lg float-right">Submit</button>
                             </div>
                         </div>
                     </div>
